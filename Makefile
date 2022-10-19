@@ -1,6 +1,6 @@
 NAME = ft_containers
 
-SRCS = 
+SRCS = vector.cpp main.cpp
 
 CXX = c++ -std=c++98
 
