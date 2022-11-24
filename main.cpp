@@ -1,4 +1,13 @@
 # include "vector.hpp"
+// # include <vector>
+// # include <cstdio>
+// # include <cstdlib>
+// # include <algorithm>
+// # include <iostream>
+// # include <sstream>
+// # include <string>
+// # include <iomanip>
+// # include <memory>
 
 // template < typename T > class Array
 // {
@@ -33,8 +42,12 @@
 
 int main(void)
 {
-	ft::vector<int>	trial;
+	ft::vector<int>		trial;
+	ft::vector<int>		filler(4, 100);
+	ft::vector<int>		copy(filler);
 
 	trial.print();
+	filler.print();
+	copy.print();
 	return (0);
 }
