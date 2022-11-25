@@ -1,0 +1,9 @@
+*.o
+*.a
+.vscode/*
+.vscode
+.DS_Store
+*.txt
+.dist
+.dist/*
+ft_containers
