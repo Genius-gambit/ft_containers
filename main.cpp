@@ -44,10 +44,9 @@ int main(void)
 {
 	ft::vector<int>		trial;
 	ft::vector<int>		filler(4, 100);
-	ft::vector<int>		copy(filler);
 
 	trial.print();
 	filler.print();
-	copy.print();
+	filler.begin()
 	return (0);
 }

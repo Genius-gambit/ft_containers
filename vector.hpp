@@ -24,11 +24,18 @@ namespace ft
 				typedef std::size_t		size_type;
 				void					print(void) { std::cout << "Size is " << this->_size << ", Capacity: " << this->_capacity << std::endl; }
 
-				/************MEMBER FUNCTIONS************************/
+				/************Constructors************************/
 				explicit vector (const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0) {};
-				explicit vector (size_type n, const value_type& val = value_type(),                 const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(n), _size(n) {(void)val;};
+				explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0)
+				{
+					(void)val;
+				};
 				vector(const vector &x) : _arr(_alloc.allocate(x._capacity)), _alloc(x._alloc), _capacity(x._capacity), _size(x._size) {};
 				~vector() { _alloc.deallocate(_arr, _capacity); }
+				
+				/************Iterators************************/
+				iterator				begin() 						{		return iterator(_elem); 						};
+
 		private:
 				value_type			*_arr;
 				allocator_type		_alloc;
