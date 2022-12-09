@@ -21,3 +21,5 @@
 4. Created a v_iterator.hpp file which will be the iterator for the vector classes.
 5. Instanciation for the vector classes is done using std::allocator.
 6. Copy Constructor for the vector classes is implemented successfully.
+7. Iterator structure initiated.
+8. Working on filling the vector container.
