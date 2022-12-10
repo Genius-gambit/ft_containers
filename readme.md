@@ -23,3 +23,4 @@
 6. Copy Constructor for the vector classes is implemented successfully.
 7. Iterator structure initiated.
 8. Working on filling the vector container.
+9. Set up for the class iterators.

@@ -3,6 +3,8 @@
 
 /***************************LIBRARIES********************************/
 # include <iterator>
+# include <vector>
+# include <cstddef>
 
 namespace ft
 {
@@ -36,12 +38,22 @@ namespace ft
 		typedef std::random_access_iterator_tag		iterator_category;
 	};
 
-
+	template < class U >
 	class iterator
 	{
 		public:
-				typedef T	valueType;
-				T	&begin(void);
+			typedef ptrdiff_t						difference_type;
+			typedef U								value_type;
+			typedef U*								pointer;
+			typedef U&								reference;
+			typedef std::random_access_iterator_tag	iterator_category;
+
+			iterator() : _it() {};
+			iterator(pointer it) : _it(it) {};
+			~iterator() {}
+
+		private:
+			pointer	_it;
 	};
 }
 

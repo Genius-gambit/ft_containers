@@ -47,6 +47,6 @@ int main(void)
 
 	trial.print();
 	filler.print();
-	filler.begin()
+	filler.begin();
 	return (0);
 }

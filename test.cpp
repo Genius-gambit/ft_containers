@@ -11,13 +11,10 @@
 
 int main(void)
 {
-	int	arr[] = { 7608, 2330, -3181, 5877, -9721, -2199, -382, 6752, -1782, -5452, 7971, 4918, 5906, -5280, -4210 };
-	std::vector<int>			vec;
-	std::vector<int>::iterator	itr;
+	std::vector<int>	trial;
+	std::allocator<int>	alloc;
 
-	for (int i = 0; i < 15; i++)
-		vec.push_back(arr[i]);
-	for (itr = vec.begin(); itr < vec.end(); itr++)
-		std::cout << *itr << " ";
-	std::cout << std::endl;
+	int *arr = alloc.allocate(5);
+	
+
 }
