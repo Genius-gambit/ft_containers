@@ -51,10 +51,15 @@ namespace ft
 			iterator() : _it() {};
 			iterator(pointer it) : _it(it) {};
 			~iterator() {}
+			iterator	operator-(difference_type n) const { return iterator(base() - n); };
+			iterator	operator+(difference_type n) const { return iterator(base() + n); };
+			pointer	base() const	{ return (_it); }
 
 		private:
 			pointer	_it;
 	};
+	template < class Iter1, class Iter2 >
+	typename iterator<Iter1>::difference_type operator - (iterator<Iter1>&first, iterator<Iter2>&second) { return (first.base() - second.base()); }
 }
 
 #endif

@@ -44,9 +44,15 @@ int main(void)
 {
 	ft::vector<int>		trial;
 	ft::vector<int>		filler(4, 100);
-
-	trial.print();
-	filler.print();
-	filler.begin();
+	// ft::vector<int>::iterator	it;
+	// filler.insert(50);
+	// filler.insert(100);
+	// std::cout << filler.end() << std::endl;
+	// filler.push_back(45);
+	// trial.insert(filler.begin() + 2, 5, 45);
+	trial.push_back(45);
+	trial.push_back(50);
+	std::cout << filler.at(0) << std::endl;
+	// trial.print();
 	return (0);
 }

@@ -20,17 +20,25 @@ namespace ft
 	class vector
 	{
 		public:
-				typedef T				value_type;
-				typedef Alloc			allocator_type;
-				typedef std::size_t		size_type;
-				void					print(void) { std::cout << "Size is " << this->_size << ", Capacity: " << this->_capacity << std::endl; }
+				typedef T													value_type;
+				typedef Alloc												allocator_type;
+				typedef typename allocator_type::reference					reference;
+				typedef std::size_t											size_type;
+				typedef ft::iterator<T>										iterator;
+				typedef typename iterator_traits<iterator>::difference_type	difference_type;
 
 				/************Iterators************************/
-				iterator				begin() 						{		return iterator(_elem); 						};
+				iterator				begin() 						{		return iterator(_arr); 						};
+				iterator				end() 						{		return iterator(_arr + _size); 						};
 				
 				/************Constructors************************/
 				explicit vector (const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0) {};
-				explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0) { insert(begin(), n, val); };
+				explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0)
+				{
+					(void)val;
+					(void)n;
+					insert(begin(), n, val);
+				};
 				vector(const vector &x) : _arr(_alloc.allocate(x._capacity)), _alloc(x._alloc), _capacity(x._capacity), _size(x._size){};
 				~vector() { _alloc.deallocate(_arr, _capacity); }
 				
@@ -44,31 +52,49 @@ namespace ft
 					T	*new_vec = _alloc.allocate(n);
 					for (size_type i = 0; i < _size; i++)
 					{
-						_alloc.construct(&new_vec[i], _elem[i]);
-						_alloc.destroy(&_elem[i]);
+						_alloc.construct(&new_vec[i], _arr[i]);
+						_alloc.destroy(&_arr[i]);
 					}
-					_alloc.deallocate(_elem, _capacity);
-					_elem = new_vec;
+					_alloc.deallocate(_arr, _capacity);
+					_arr = new_vec;
 					_capacity = n;
 				}
-				iterator insert (iterator position, const value_type& val);
-				void insert (iterator position, size_type n, const value_type& val);
+				void insert (iterator position, size_type n, const value_type& val)
 				{
-					size_type			i = position - begin();
+					(void)n;
+					(void)val;
+					(void)position;
+					// std::cout << position.base() << "\n";
+				}
+				// iterator insert (iterator position, const value_type& val);
+				void	insert(const value_type &val)
+				{
+					size_type	it;
+					it = 
+					_capacity += 2;
+					_arr = _alloc.allocate(_capacity);
+					_alloc.construct(_arr, val);
+				}
+				void	print()
+				{
+					int	i;
 
-					if ((_size + n) > _capacity)
-						reserve(_new_capacity(_size + n));
-					for (size_type j = n + _size - 1; j > i + n - 1; j -= 1)
+					i = 0;
+					while (i < (int)_size)
 					{
-						_alloc.construct(&_elem[j], _elem[j - n]);
-						_alloc.destroy(&_elem[j - n]);
-					}
-					for (size_type k = i; k < i + n; k++)
-					{
-						_alloc.construct(&_elem[k], val);
-						_size++;
+						std::cout << _arr[i] << std::endl;
+						i++;
 					}
 				}
+				void push_back (const value_type& val)
+				{
+					if (_size == _capacity)
+						reserve(_new_capacity(_size + 1));
+					_alloc.construct(_arr + _size, val);
+					_size++;
+				}
+				size_type	max_size() { return (_alloc.max_size()); }
+				reference at (size_type n) { (void)n; return (_arr[0]); }
 
 
 		private:
@@ -76,6 +102,14 @@ namespace ft
 				allocator_type		_alloc;
 				size_type			_capacity;
 				size_type			_size;
+				size_type			_new_capacity(size_type size)
+				{
+					size_type	n;
+
+					n = 1;
+					for (n = 1; n < size; n *= 2);
+					return (n);
+				}
 	};
 }
 

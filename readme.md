@@ -9,10 +9,14 @@
 `#TODO:`
 
 1. ~~Set up an instanciation for the vector classes using std::allocator.~~
-2. Set up an Iterator for the starting and the ending index of the vector container.
+~~2. Set up an Iterator for the starting and the ending index of the vector container.~~
 3. Implement member functions which adds values to the vectors.
-4. Get the allocation working for the vector classes.
+~~4. Get the allocation working for the vector classes.~~
 5. ~~Get Destructor working to free all the memory for the vector classes.~~
+6. Implement working on simple vectors.
+7. Implement iterator positions.
+8. Get the references of each and every element in the vector container.
+9. Work on Insertion using iterators, allocator in vectors.
 
 `#LOG:`
 1. Created a vector.hpp file for the instanciation.
@@ -24,3 +28,7 @@
 7. Iterator structure initiated.
 8. Working on filling the vector container.
 9. Set up for the class iterators.
+10. Set up Implement insert, push_back member functions
+11. Set up max_size().
+12. Set up "at()" member function in vector.hpp.
+13. Work on push_back() in vector.hpp.

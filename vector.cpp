@@ -10,10 +10,8 @@
 
 int main(void)
 {
-	std::allocator<int>	alloc;
-	int	*array = alloc.allocate(3);
+	std::vector<int>	arr;
 
-	alloc.construct(array, 5);
-	std::cout << array[0] << std::endl;
+	std::cout << arr.at(0) 	<< std::endl;
 	return 0;
 }
