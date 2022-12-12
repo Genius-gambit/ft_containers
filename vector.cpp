@@ -8,10 +8,18 @@
 # include <iomanip>
 # include <memory>
 
+/*
+*/
+
 int main(void)
 {
-	std::vector<int>	arr;
+	std::allocator<int>	allocator;
+	int					*arr;
 
-	std::cout << arr.at(0) 	<< std::endl;
+	arr = allocator.allocate(5);
+	allocator.construct(arr, 45);
+	std::cout << arr[0] << std::endl;
+	allocator.destroy(arr);
+	allocator.deallocate(arr, 5);
 	return 0;
 }

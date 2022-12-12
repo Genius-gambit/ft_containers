@@ -42,17 +42,18 @@
 
 int main(void)
 {
-	ft::vector<int>		trial;
-	ft::vector<int>		filler(4, 100);
-	// ft::vector<int>::iterator	it;
-	// filler.insert(50);
-	// filler.insert(100);
-	// std::cout << filler.end() << std::endl;
-	// filler.push_back(45);
-	// trial.insert(filler.begin() + 2, 5, 45);
-	trial.push_back(45);
-	trial.push_back(50);
-	std::cout << filler.at(0) << std::endl;
-	// trial.print();
-	return (0);
+	ft::vector<int>	str;
+
+	str.push_back(20);
+	str.push_back(10);
+	str.push_back(54);
+	str.push_back(120);
+
+	std::cout << str[0] << " " << str[1] << " " << str[2] << " " << str[3] << std::endl;
+	str.clear();
+	std::cout << str[0] << " " << str[1] << " " << str[2] << std::endl;
+	std::cout << str.size() << std::endl;
+	str.push_back(114);
+	std::cout << str.size() << std::endl;
+	return 0;
 }

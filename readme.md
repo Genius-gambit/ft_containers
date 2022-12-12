@@ -17,6 +17,7 @@
 7. Implement iterator positions.
 8. Get the references of each and every element in the vector container.
 9. Work on Insertion using iterators, allocator in vectors.
+10. Implement all member functions of the vectors.
 
 `#LOG:`
 1. Created a vector.hpp file for the instanciation.
@@ -32,3 +33,5 @@
 11. Set up max_size().
 12. Set up "at()" member function in vector.hpp.
 13. Work on push_back() in vector.hpp.
+14. Implemented member functions, size(), pop_back(), operator[], capacity, back.
+15. 

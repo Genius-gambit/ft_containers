@@ -86,7 +86,7 @@ namespace ft
 						i++;
 					}
 				}
-				void push_back (const value_type& val)
+				void	push_back (const value_type& val)
 				{
 					if (_size == _capacity)
 						reserve(_new_capacity(_size + 1));
@@ -94,7 +94,33 @@ namespace ft
 					_size++;
 				}
 				size_type	max_size() { return (_alloc.max_size()); }
-				reference at (size_type n) { (void)n; return (_arr[0]); }
+				reference at (size_type n) { return (_arr[n]); }
+				reference operator[] (size_type n)
+				{
+					if (n < _size)
+						return (_arr[n]);
+					return (_arr[n]);
+				}
+				void pop_back()
+				{
+					if (_size > 0)
+					{
+						_alloc.destroy(_arr + _size);
+						_size--;
+					}
+				}
+				size_type size() const { return (_size); };
+				reference back()
+				{
+					return (_arr[_size - 1]);
+				}
+				size_type capacity() const { return (_capacity); }
+				void clear()
+				{
+					for (size_type i = 0; i < _size; i++)
+						_alloc.destroy(&_arr[i]);
+					_size = 0;
+				}
 
 
 		private:
