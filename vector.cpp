@@ -13,13 +13,9 @@
 
 int main(void)
 {
-	std::allocator<int>	allocator;
-	int					*arr;
+	std::vector<int>	trial(5, 100);
 
-	arr = allocator.allocate(5);
-	allocator.construct(arr, 45);
-	std::cout << arr[0] << std::endl;
-	allocator.destroy(arr);
-	allocator.deallocate(arr, 5);
+	trial.resize(45);
+	std::cout << trial.capacity() << std::endl;
 	return 0;
 }

@@ -44,12 +44,15 @@ int main(void)
 {
 	ft::vector<int>	str;
 
+	std::cout << str.empty() << std::endl;
 	str.push_back(20);
 	str.push_back(10);
 	str.push_back(54);
 	str.push_back(120);
 
+	std::cout << str.empty() << std::endl;
 	std::cout << str[0] << " " << str[1] << " " << str[2] << " " << str[3] << std::endl;
+	std::cout << "Front is " << str.front() << ", Back is " << str.back() << std::endl;
 	str.clear();
 	std::cout << str[0] << " " << str[1] << " " << str[2] << std::endl;
 	std::cout << str.size() << std::endl;

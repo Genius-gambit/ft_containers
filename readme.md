@@ -34,4 +34,4 @@
 12. Set up "at()" member function in vector.hpp.
 13. Work on push_back() in vector.hpp.
 14. Implemented member functions, size(), pop_back(), operator[], capacity, back.
-15. 
+15. Implemented member functions, back, front, clear, empty.
