@@ -46,22 +46,62 @@ namespace ft
 
 		vector(const vector& x): _arr(_alloc.allocate(x._capacity)), _alloc(x._alloc), _capacity(x._capacity), _size(x._size) {};
 
-		~vector() { _alloc.deallocate(_arr, _capacity); }
+		void assign(size_type count, const T& value)
+		{
+			_alloc.deallocate(_arr, _capacity);
+			_capacity = 0;
+			_arr = _alloc.allocate(count);
+			for (size_type i = 0; i < count; i++)
+				_alloc.construct(&_arr[i], value);
+			_size = count;
+			_capacity = count;
+		}
+
+		~vector() { clear();_alloc.deallocate(_arr, _capacity);_capacity = 0; }
 
 
 		/********************************** Member Functions *******************************************************************/
 
 		/********************************** Allocators Functions *******************************************************************/
 
+		allocator_type get_allocator() const { return (_alloc); }
+
 		/********************************** Capacity Functions *******************************************************************/
 
 		size_type capacity() const { return (_capacity); }
 
-		size_type	max_size() { return (_alloc.max_size()); }
+		size_type	max_size() const { return (_alloc.max_size()); }
 
 		size_type size() const { return (_size); };
 
-		void resize(size_type n, value_type val = value_type());
+		void resize(size_type n, value_type val = value_type())
+		{
+			(void)val;
+			if (n < 0)
+				throw std::length_error("Allocation size is less than 0");
+			if (n == 0)
+			{
+				clear();
+				return;
+			}
+			if (n > _size)
+			{
+				if (n > max_size())
+					throw std::length_error("Allocation size is greater than the max size");
+				T* new_vec = _alloc.allocate(n);
+				for (size_type i = 0; i < _size; i++)
+				{
+					_alloc.construct(&new_vec[i], _arr[i]);
+					_alloc.destroy(&_arr[i]);
+				}
+				for (size_type i = _size; i < n; i++)
+					_alloc.construct(&new_vec[i], val);
+				_alloc.deallocate(_arr, _capacity);
+				_arr = new_vec;
+				_capacity = n;
+				_size = n;
+			}
+		}
 
 		void					reserve(size_type n)
 		{
@@ -80,21 +120,6 @@ namespace ft
 		}
 
 		bool empty() const { return (_size == 0 ? true : false); }
-
-		void insert(iterator position, size_type n, const value_type& val)
-		{
-			(void)n;
-			(void)val;
-			(void)position;
-			// std::cout << position.base() << "\n";
-		}
-
-		void	insert(const value_type& val)
-		{
-			_capacity += 2;
-			_arr = _alloc.allocate(_capacity);
-			_alloc.construct(_arr, val);
-		}
 
 		void	print()
 		{
@@ -124,6 +149,21 @@ namespace ft
 		reference back() { return (_arr[_size - 1]); }
 
 		/********************************** Modifers Functions *******************************************************************/
+
+		void insert(iterator position, size_type n, const value_type& val)
+		{
+			(void)n;
+			(void)val;
+			(void)position;
+			// std::cout << position.base() << "\n";
+		}
+
+		void	insert(const value_type& val)
+		{
+			_capacity += 2;
+			_arr = _alloc.allocate(_capacity);
+			_alloc.construct(_arr, val);
+		}
 
 		void	push_back(const value_type& val)
 		{

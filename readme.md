@@ -35,3 +35,7 @@
 13. Work on push_back() in vector.hpp.
 14. Implemented member functions, size(), pop_back(), operator[], capacity, back.
 15. Implemented member functions, back, front, clear, empty.
+16. Implemented member functions, resize, assign, get_allocator.
+17. Basic operations done for the vector iterators.
+18. Operators overloads for the iterators: -, -=, +, +=, *, ++, ->, ++(int), --, --(int).
+19. Operators overloads for the two iterators comparison: -, ==, <, !=, >, >=, <=, +.

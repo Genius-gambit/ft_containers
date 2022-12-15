@@ -44,19 +44,52 @@ int main(void)
 {
 	ft::vector<int>	str;
 
-	std::cout << str.empty() << std::endl;
+
+	ft::vector<int>::iterator	it;
+	ft::vector<int>::iterator	i1;
+	ft::vector<int>::iterator	i2;
+	// std::vector<int>	trial;
+
+	// std::cout << str.empty() << std::endl;
 	str.push_back(20);
 	str.push_back(10);
 	str.push_back(54);
 	str.push_back(120);
+	str.resize(5, 5);
+	for (unsigned long int i = 0; i < str.size(); i++)
+		std::cout << str.at(i) << " ";
+	std::cout << std::endl;
+	// trial.push_back(20);
+	// trial.push_back(10);
+	// trial.push_back(54);
+	// trial.push_back(120);
 
-	std::cout << str.empty() << std::endl;
-	std::cout << str[0] << " " << str[1] << " " << str[2] << " " << str[3] << std::endl;
-	std::cout << "Front is " << str.front() << ", Back is " << str.back() << std::endl;
-	str.clear();
-	std::cout << str[0] << " " << str[1] << " " << str[2] << std::endl;
 	std::cout << str.size() << std::endl;
-	str.push_back(114);
+	std::cout << std::endl;
+	// trial.push_back(20);
+	// trial.push_back(10);
+	// trial.push_back(54);
+	// trial.push_back(120);
+	it = str.begin();
+	std::cout << *it << std::endl;
+	it++;
+	std::cout << *it << std::endl;
 	std::cout << str.size() << std::endl;
+	it = str.begin();
+	for (unsigned long int i = 0; i < str.size(); i++, it++)
+	{
+		std::cout << *it << std::endl;
+	}
+	it = str.begin();
+	it += 5;
+	std::cout << *it << std::endl;
+	i1 = str.begin();
+	i2 = str.begin() + 5;
+
+	if (i1 != i2)
+		std::cout << "Yes" << std::endl;
+	else
+		std::cout << "No" << std::endl;
+
 	return 0;
 }
