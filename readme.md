@@ -1,6 +1,4 @@
-`#DATE:`
-
-8 December 2022
+`#DATE:` 8 December 2022
 
 `#NOTES:`
 
