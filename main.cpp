@@ -43,11 +43,15 @@
 int main(void)
 {
 	ft::vector<int>	str;
+	std::vector<int>	vtr;
 
 
 	ft::vector<int>::iterator	it;
+	std::vector<int>::iterator	it1;
 	ft::vector<int>::iterator	i1;
 	ft::vector<int>::iterator	i2;
+	ft::vector<int>::reverse_iterator	reve;
+	std::vector<int>::reverse_iterator	rev1;
 	// std::vector<int>	trial;
 
 	// std::cout << str.empty() << std::endl;
@@ -55,41 +59,77 @@ int main(void)
 	str.push_back(10);
 	str.push_back(54);
 	str.push_back(120);
-	str.resize(5, 5);
-	for (unsigned long int i = 0; i < str.size(); i++)
-		std::cout << str.at(i) << " ";
-	std::cout << std::endl;
-	// trial.push_back(20);
-	// trial.push_back(10);
-	// trial.push_back(54);
-	// trial.push_back(120);
+	vtr.push_back(20);
+	vtr.push_back(10);
+	vtr.push_back(54);
+	vtr.push_back(120);
+	// str.resize(5, 5);
+	// for (unsigned long int i = 0; i < str.size(); i++)
+	// 	std::cout << str.at(i) << " ";
+	// std::cout << std::endl;
+	// // trial.push_back(20);
+	// // trial.push_back(10);
+	// // trial.push_back(54);
+	// // trial.push_back(120);
 
-	std::cout << str.size() << std::endl;
-	std::cout << std::endl;
-	// trial.push_back(20);
-	// trial.push_back(10);
-	// trial.push_back(54);
-	// trial.push_back(120);
-	it = str.begin();
-	std::cout << *it << std::endl;
-	it++;
-	std::cout << *it << std::endl;
-	std::cout << str.size() << std::endl;
-	it = str.begin();
-	for (unsigned long int i = 0; i < str.size(); i++, it++)
+	// std::cout << str.size() << std::endl;
+	// std::cout << std::endl;
+	// // trial.push_back(20);
+	// // trial.push_back(10);
+	// // trial.push_back(54);
+	// // trial.push_back(120);
+	// it = str.begin();
+	// std::cout << *it << std::endl;
+	// it++;
+	// std::cout << *it << std::endl;
+	// std::cout << str.size() << std::endl;
+	// it = str.begin();
+	// for (unsigned long int i = 0; i < str.size(); i++, it++)
+	// {
+	// 	std::cout << *it << std::endl;
+	// }
+	// it = str.begin();
+	// it += 5;
+	// std::cout << *it << std::endl;
+	// i1 = str.begin();
+	// i2 = str.begin() + 5;
+
+	// if (i1 != i2)
+	// 	std::cout << "Yes" << std::endl;
+	// else
+	// 	std::cout << "No" << std::endl;
+	// reve = str.rbegin();
+	// rev1 = vtr.rbegin();
+	// it = str.end();
+	// std::cout << *reve;
+	// std::cout << std::endl;
+	// std::cout << *rev1;
+	// std::cout << std::endl;
+	// reve++;
+	// std::cout << *reve;
+	// std::cout << std::endl;
+	for (reve = str.rbegin(); reve != str.rend(); reve++)
 	{
-		std::cout << *it << std::endl;
+		std::cout << *reve << " ";
 	}
-	it = str.begin();
-	it += 5;
-	std::cout << *it << std::endl;
-	i1 = str.begin();
-	i2 = str.begin() + 5;
-
-	if (i1 != i2)
-		std::cout << "Yes" << std::endl;
-	else
-		std::cout << "No" << std::endl;
+	std::cout << std::endl;
+	for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
+	{
+		std::cout << *rev1 << " ";
+	}
+	std::cout << std::endl;
+	for (it = str.begin(); it != str.end(); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
+	{
+		std::cout << *rev1 << " ";
+	}
+	// std::cout << *it;
+	std::cout << std::endl;
+	// std::cout << str.size() << "\n";
 
 	return 0;
 }

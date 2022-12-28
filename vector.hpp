@@ -25,13 +25,16 @@ namespace ft
 		typedef typename allocator_type::reference					reference;
 		typedef std::size_t											size_type;
 		typedef ft::iterator<T>										iterator;
+		typedef ft::reverse_iterator<T>								reverse_iterator;
 		typedef typename iterator_traits<iterator>::difference_type	difference_type;
 
 		/********************************** Iterators Functions *******************************************************************/
 
 		iterator				begin() { return iterator(_arr); };
-
 		iterator				end() { return iterator(_arr + _size); };
+
+		reverse_iterator				rbegin() { return reverse_iterator(_arr + _size - 1); };
+		reverse_iterator				rend() { return reverse_iterator(_arr - 1); };
 
 		/********************************** Constructors & Destructors *******************************************************************/
 
@@ -155,7 +158,8 @@ namespace ft
 			(void)n;
 			(void)val;
 			(void)position;
-			// std::cout << position.base() << "\n";
+			// if (position > _size)
+				// std::cout << position.base() << "\n";
 		}
 
 		void	insert(const value_type& val)
@@ -171,6 +175,7 @@ namespace ft
 				reserve(_new_capacity(_size + 1));
 			_alloc.construct(_arr + _size, val);
 			_size++;
+			// print();
 		}
 
 		void pop_back()
