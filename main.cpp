@@ -46,12 +46,12 @@ int main(void)
 	std::vector<int>	vtr;
 
 
-	ft::vector<int>::iterator	it;
-	std::vector<int>::iterator	it1;
-	ft::vector<int>::iterator	i1;
-	ft::vector<int>::iterator	i2;
-	ft::vector<int>::reverse_iterator	reve;
-	std::vector<int>::reverse_iterator	rev1;
+	// ft::vector<int>::iterator	it;
+	// std::vector<int>::iterator	it1;
+	// ft::vector<int>::iterator	i1;
+	// ft::vector<int>::iterator	i2;
+	// ft::vector<int>::reverse_iterator	reve;
+	// std::vector<int>::reverse_iterator	rev1;
 	// std::vector<int>	trial;
 
 	// std::cout << str.empty() << std::endl;
@@ -108,27 +108,26 @@ int main(void)
 	// reve++;
 	// std::cout << *reve;
 	// std::cout << std::endl;
-	for (reve = str.rbegin(); reve != str.rend(); reve++)
-	{
-		std::cout << *reve << " ";
-	}
-	std::cout << std::endl;
-	for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
-	{
-		std::cout << *rev1 << " ";
-	}
-	std::cout << std::endl;
-	for (it = str.begin(); it != str.end(); it++)
-	{
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-	for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
-	{
-		std::cout << *rev1 << " ";
-	}
-	// std::cout << *it;
-	std::cout << std::endl;
+	// for (reve = str.rbegin(); reve != str.rend(); reve++)
+	// {
+	// 	std::cout << *reve << " ";
+	// }
+	// std::cout << std::endl;
+	// for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
+	// {
+	// 	std::cout << *rev1 << " ";
+	// }
+	// std::cout << std::endl;
+	// for (it = str.begin(); it != str.end(); it++)
+	// {
+	// 	std::cout << *it << " ";
+	// }
+	// std::cout << std::endl;
+	// for (rev1 = vtr.rbegin(); rev1 != vtr.rend(); rev1++)
+	// {
+	// 	std::cout << *rev1 << " ";
+	// }
+	// std::cout << std::endl;
 	// std::cout << str.size() << "\n";
 
 	return 0;
