@@ -15,11 +15,13 @@
 3. Implement member functions which adds values to the vectors.
 ~~4. Get the allocation working for the vector classes.~~
 5. ~~Get Destructor working to free all the memory for the vector classes.~~
-6. Implement working on simple vectors.
-7. Implement iterator positions.
-8. Get the references of each and every element in the vector container.
-9. Work on Insertion using iterators, allocator in vectors.
+~~6. Implement working on simple vectors.~~
+~~7. Implement iterator positions.~~
+~~8. Get the references of each and every element in the vector container.~~
+~~9. Work on Insertion using iterators, allocator in vectors.~~
 10. Implement all member functions of the vectors.
+11. Implement Enable if.
+12. Implement vector container operator overloads.
 
 `#LOG:`
 1. Created a vector.hpp file for the instanciation.
@@ -41,3 +43,5 @@
 17. Basic operations done for the vector iterators.
 18. Operators overloads for the iterators: -, -=, +, +=, *, ++, ->, ++(int), --, --(int).
 19. Operators overloads for the two iterators comparison: -, ==, <, !=, >, >=, <=, +.
+20. Reverse Iterators done in v_iterator.
+21. Finished Enable if.
