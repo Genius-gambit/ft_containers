@@ -8,6 +8,10 @@
 4. https://www.geeksforgeeks.org/iterators-c-stl/
 5. https://en.cppreference.com/w/cpp/container/vector
 
+
+`#BUGS:`
+1. Operator overloads of the vector comparisons.
+
 `#TODO:`
 
 1. ~~Set up an instanciation for the vector classes using std::allocator.~~
@@ -20,8 +24,11 @@
 ~~8. Get the references of each and every element in the vector container.~~
 ~~9. Work on Insertion using iterators, allocator in vectors.~~
 10. Implement all member functions of the vectors.
-11. Implement Enable if.
+~~11. Implement Enable if.~~
 12. Implement vector container operator overloads.
+13. Implement lexicograhical comparisons of the vector.
+14. Implement structure for the map container.
+15. Understand the logic of the red black tree.
 
 `#LOG:`
 1. Created a vector.hpp file for the instanciation.
@@ -45,3 +52,4 @@
 19. Operators overloads for the two iterators comparison: -, ==, <, !=, >, >=, <=, +.
 20. Reverse Iterators done in v_iterator.
 21. Finished Enable if.
+22. Created map.hpp.
