@@ -25,7 +25,7 @@ namespace ft
 				return (false);
 		}
 		return (first1 == last1 && first2 != last2);
-	}
+	};
 };
 
 #endif

@@ -55,6 +55,11 @@ namespace ft
 		};
 		iterator(const iterator& it): _it(it._it) {}
 		~iterator() {}
+		iterator	operator=(const iterator& r)
+		{
+			_it = r.base();
+			return *this;
+		};
 		iterator	operator-(difference_type n) const { return iterator(_it - n); };
 		iterator	operator-=(difference_type n) const { return iterator(_it - n); };
 		iterator	operator+(difference_type n) const { return iterator(_it + n); };

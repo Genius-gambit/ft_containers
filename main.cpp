@@ -43,7 +43,9 @@
 int main(void)
 {
 	ft::vector<int>	str;
+	ft::vector<int>	cpy;
 	std::vector<int>	vtr;
+	bool	res;
 
 
 	// ft::vector<int>::iterator	it;
@@ -129,6 +131,9 @@ int main(void)
 	// }
 	// std::cout << std::endl;
 	// std::cout << str.size() << "\n";
+	res = true;
+	res = str == cpy;
+	std::cout << res << std::endl;
 
 	return 0;
 }

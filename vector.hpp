@@ -18,7 +18,7 @@
 
 namespace ft
 {
-	template <class T, class Alloc = std::allocator<T>>
+	template < class T, class Alloc = std::allocator<T> >
 	class vector
 	{
 	public:
@@ -27,6 +27,7 @@ namespace ft
 		typedef typename allocator_type::reference reference;
 		typedef std::size_t size_type;
 		typedef ft::iterator<T> iterator;
+		typedef const ft::iterator<T> const_iterator;
 		typedef ft::reverse_iterator<T> reverse_iterator;
 		typedef typename iterator_traits<iterator>::difference_type difference_type;
 
@@ -40,18 +41,18 @@ namespace ft
 
 		/********************************** Constructors & Destructors *******************************************************************/
 
-		explicit vector(const allocator_type &alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0){};
+		explicit vector(const allocator_type& alloc = allocator_type()): _arr(NULL), _alloc(alloc), _capacity(0), _size(0) {};
 
-		explicit vector(size_type n, const value_type &val = value_type(), const allocator_type &alloc = allocator_type()) : _arr(NULL), _alloc(alloc), _capacity(0), _size(0)
+		explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()): _arr(NULL), _alloc(alloc), _capacity(0), _size(0)
 		{
 			(void)val;
 			(void)n;
 			insert(begin(), n, val);
 		};
 
-		vector(const vector &x) : _arr(_alloc.allocate(x._capacity)), _alloc(x._alloc), _capacity(x._capacity), _size(x._size){};
+		vector(const vector& x): _arr(_alloc.allocate(x._capacity)), _alloc(x._alloc), _capacity(x._capacity), _size(x._size) {};
 
-		void assign(size_type count, const T &value)
+		void assign(size_type count, const T& value)
 		{
 			_alloc.deallocate(_arr, _capacity);
 			_capacity = 0;
@@ -97,7 +98,7 @@ namespace ft
 			{
 				if (n > max_size())
 					throw std::length_error("Allocation size is greater than the max size");
-				T *new_vec = _alloc.allocate(n);
+				T* new_vec = _alloc.allocate(n);
 				for (size_type i = 0; i < _size; i++)
 				{
 					_alloc.construct(&new_vec[i], _arr[i]);
@@ -118,7 +119,7 @@ namespace ft
 				return;
 			if (n > max_size())
 				throw std::length_error("Allocation size is greater than the max size");
-			T *new_vec = _alloc.allocate(n);
+			T* new_vec = _alloc.allocate(n);
 			for (size_type i = 0; i < _size; i++)
 			{
 				_alloc.construct(&new_vec[i], _arr[i]);
@@ -160,7 +161,7 @@ namespace ft
 
 		/********************************** Modifers Functions *******************************************************************/
 
-		void insert(iterator position, size_type n, const value_type &val)
+		void insert(iterator position, size_type n, const value_type& val)
 		{
 			(void)n;
 			(void)val;
@@ -169,14 +170,14 @@ namespace ft
 			// std::cout << position.base() << "\n";
 		}
 
-		void insert(const value_type &val)
+		void insert(const value_type& val)
 		{
 			_capacity += 2;
 			_arr = _alloc.allocate(_capacity);
 			_alloc.construct(_arr, val);
 		}
 
-		void push_back(const value_type &val)
+		void push_back(const value_type& val)
 		{
 			if (_size == _capacity)
 				reserve(_new_capacity(_size + 1));
@@ -202,7 +203,7 @@ namespace ft
 		}
 
 	private:
-		value_type *_arr;
+		value_type* _arr;
 		allocator_type _alloc;
 		size_type _capacity;
 		size_type _size;
@@ -215,14 +216,30 @@ namespace ft
 				;
 			return (n);
 		}
-	}
+	};
 
-	// template <class T, class Alloc>
-	// bool operator==(const vector<T, Alloc> &l, const vector<T, Alloc> &r)
-	// {
-	// 	// std::cout << "Check\n";
-	// 	return (true);
-	// };
+	/********************************** Non Member Functions *******************************************************************/
+
+	template <class T, class Alloc>
+	bool operator==(const vector<T, Alloc>& l, const vector<T, Alloc>& r)
+	{
+		if (l.size() != r.size())
+			return false;
+		return (ft::equal(l.begin(), l.end(), r.begin()));
+	};
+
+	template <class T, class Alloc>
+	bool operator!=(const vector<T, Alloc>& l, const vector<T, Alloc>& r)
+	{
+		return !(l == r);
+	};
+
+	template< class T, class Alloc >
+	bool operator<(const vector<T, Alloc>& l, const vector<T, Alloc>& r)
+	{
+		if (l.size() >= r.size())
+			return (false);
+	};
 }
 
 #endif
