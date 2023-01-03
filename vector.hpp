@@ -225,9 +225,7 @@ namespace ft
 			{
 				size_type	n_size;
 				size_type	old_cap = capacity();
-				std::cout << capacity() << std::endl;
 				reserve(capacity() + n);
-				std::cout << capacity() << std::endl;
 				n_size = _capacity;
 				T* new_vec = _alloc.allocate(n_size);
 				for (size_type i = 0; i < n; i++)
