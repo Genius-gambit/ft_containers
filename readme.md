@@ -53,3 +53,5 @@
 20. Reverse Iterators done in v_iterator.
 21. Finished Enable if.
 22. Created map.hpp.
+23. Finished implementation of insert function in vector.
+24. Completed swap function for vector.

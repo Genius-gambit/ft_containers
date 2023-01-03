@@ -22,5 +22,13 @@ int main(void)
 		std::cout << *j << " ";
 	}
 	std::cout << std::endl;
+	std::cout << trial.size() << std::endl;
+	trial.insert(trial.begin(), 5, 45);
+	std::cout << trial.size() << std::endl;
+	for (std::vector<int>::iterator j = trial.begin(); j < trial.end(); j++)
+	{
+		std::cout << *j << " ";
+	}
+	std::cout << std::endl;
 	return 0;
 }

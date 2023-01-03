@@ -25,6 +25,9 @@ namespace ft
 		typedef T value_type;
 		typedef Alloc allocator_type;
 		typedef typename allocator_type::reference reference;
+		typedef typename allocator_type::pointer pointer;
+		typedef typename allocator_type::const_pointer const_pointer;
+		typedef typename allocator_type::const_reference const_reference;
 		typedef std::size_t size_type;
 		typedef ft::iterator<T> iterator;
 		typedef const ft::iterator<T> const_iterator;
@@ -34,7 +37,9 @@ namespace ft
 		/********************************** Iterators Functions *******************************************************************/
 
 		iterator begin() { return iterator(_arr); };
+		const_iterator begin() const { return const_iterator(_arr); }
 		iterator end() { return iterator(_arr + _size); };
+		const_iterator end() const { return const_iterator(_arr + _size); }
 
 		reverse_iterator rbegin() { return reverse_iterator(_arr + _size - 1); };
 		reverse_iterator rend() { return reverse_iterator(_arr - 1); };
@@ -146,28 +151,120 @@ namespace ft
 
 		/********************************** Element access Functions *******************************************************************/
 
-		reference at(size_type n) { return (_arr[n]); }
+		reference at(size_type n)
+		{
+			if (n < _size)
+				return (_arr[n]);
+			throw std::out_of_range("Element out of range");
+		}
+		const_reference at(size_type n) const
+		{
+			if (n < _size)
+				return (_arr[n]);
+			throw std::out_of_range("Element out of range");
+		}
 
 		reference operator[](size_type n)
 		{
 			if (n < _size)
 				return (_arr[n]);
-			return (_arr[n]);
+			throw std::out_of_range("Element out of range");
+		}
+		const_reference operator[](size_type n) const
+		{
+			if (n < _size)
+				return (_arr[n]);
+			throw std::out_of_range("Element out of range");
 		}
 
-		reference front() { return (_arr[0]); }
+		reference front()
+		{
+			if (_size > 0)
+				return (_arr[0]);
+			throw std::out_of_range("Element out of range");
+		}
+		const_reference front() const
+		{
+			if (_size > 0)
+				return (_arr[0]);
+			throw std::out_of_range("Element out of range");
+		}
 
-		reference back() { return (_arr[_size - 1]); }
+		reference back()
+		{
+			if (_size > 0)
+				return (_arr[_size - 1]);
+			throw std::out_of_range("Element out of range");
+		}
+		const_reference back() const
+		{
+			if (_size > 0)
+				return (_arr[_size - 1]);
+			throw std::out_of_range("Element out of range");
+		}
+
+		/********************************** Pointer Functions *******************************************************************/
+		pointer	data() { return (_arr); }
+		const_pointer	data() const { return (_arr); }
 
 		/********************************** Modifers Functions *******************************************************************/
 
 		void insert(iterator position, size_type n, const value_type& val)
 		{
-			(void)n;
-			(void)val;
-			(void)position;
-			// if (position > _size)
-			// std::cout << position.base() << "\n";
+			if (position < begin() || position > end())
+				throw std::out_of_range("Position out of range");
+			if (position == end())
+			{
+				size_type	n_size;
+				reserve(capacity() + n);
+				n_size = _size + n;
+				for (;_size < n_size; _size++)
+					_alloc.construct(_arr + _size, val);
+			}
+			else if (position == begin())
+			{
+				size_type	n_size;
+				size_type	old_cap = capacity();
+				std::cout << capacity() << std::endl;
+				reserve(capacity() + n);
+				std::cout << capacity() << std::endl;
+				n_size = _capacity;
+				T* new_vec = _alloc.allocate(n_size);
+				for (size_type i = 0; i < n; i++)
+					_alloc.construct(&new_vec[i], val);
+				size_type	j = 0;
+				for (size_type i = n; i < n_size; i++)
+				{
+					_alloc.construct(&new_vec[i], _arr[j]);
+					j++;
+				}
+				for (size_type i = 0; i < _size; i++)
+					_alloc.destroy(&_arr[i]);
+				_alloc.deallocate(_arr, old_cap);
+				_arr = new_vec;
+				_size = n_size;
+			}
+			else
+			{
+				iterator	it;
+				size_type	n_size;
+				size_type	old_cap = capacity();
+				n_size = _capacity;
+				T* new_vec = _alloc.allocate(_capacity + n);
+				size_type	i;
+				for (it = begin(), i = 0; it != position; it++, i++)
+					_alloc.construct(&new_vec[i], *it);
+				for (size_type k = 0; k < n; k++, i++)
+					_alloc.construct(&new_vec[i], val);
+				for (it = position; it != end(); it++, i++)
+					_alloc.construct(&new_vec[i], *it);
+				reserve(_capacity + n);
+				for (size_type size = 0; size < _size; size++)
+					_alloc.destroy(&_arr[size]);
+				_alloc.deallocate(_arr, old_cap);
+				_arr = new_vec;
+				_size = i;
+			}
 		}
 
 		void insert(const value_type& val)
@@ -179,11 +276,12 @@ namespace ft
 
 		void push_back(const value_type& val)
 		{
+			if (_size == _capacity && _capacity + 1 > max_size())
+				throw std::length_error("Allocation size is greater than the max size");
 			if (_size == _capacity)
 				reserve(_new_capacity(_size + 1));
 			_alloc.construct(_arr + _size, val);
 			_size++;
-			// print();
 		}
 
 		void pop_back()
@@ -200,6 +298,13 @@ namespace ft
 			for (size_type i = 0; i < _size; i++)
 				_alloc.destroy(&_arr[i]);
 			_size = 0;
+		}
+		void	swap(vector& other)
+		{
+			ft::swap(_alloc, other._alloc);
+			ft::swap(this->_arr, other._arr);
+			ft::swap(this->_capacity, other._capacity);
+			ft::swap(this->_size, other._size);
 		}
 
 	private:
@@ -239,6 +344,11 @@ namespace ft
 	{
 		if (l.size() >= r.size())
 			return (false);
+	};
+	template< class T, class Alloc >
+	void swap(const vector<T, Alloc>& first, const vector<T, Alloc>& second)
+	{
+		first.swap(second);
 	};
 }
 

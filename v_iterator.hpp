@@ -48,6 +48,7 @@ namespace ft
 		typedef const U* const_pointer;
 		typedef U& reference;
 		typedef std::random_access_iterator_tag	iterator_category;
+		typedef iterator<const U>				const_iterator;
 
 		iterator(): _it() {};
 		iterator(pointer it): _it(it)
@@ -84,6 +85,7 @@ namespace ft
 			--(_it);
 			return(old);
 		};
+		operator	const_iterator() const { return const_iterator(_it); }
 		pointer	base() const { return (_it); }
 
 	private:

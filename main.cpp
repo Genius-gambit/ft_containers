@@ -45,7 +45,6 @@ int main(void)
 	ft::vector<int>	str;
 	ft::vector<int>	cpy;
 	std::vector<int>	vtr;
-	bool	res;
 
 
 	// ft::vector<int>::iterator	it;
@@ -58,13 +57,12 @@ int main(void)
 
 	// std::cout << str.empty() << std::endl;
 	str.push_back(20);
+	cpy.push_back(20);
 	str.push_back(10);
-	str.push_back(54);
-	str.push_back(120);
+	// str.push_back(54);
+	// str.push_back(120);
 	vtr.push_back(20);
 	vtr.push_back(10);
-	vtr.push_back(54);
-	vtr.push_back(120);
 	// str.resize(5, 5);
 	// for (unsigned long int i = 0; i < str.size(); i++)
 	// 	std::cout << str.at(i) << " ";
@@ -131,9 +129,23 @@ int main(void)
 	// }
 	// std::cout << std::endl;
 	// std::cout << str.size() << "\n";
-	res = true;
-	res = str == cpy;
-	std::cout << res << std::endl;
-
+	ft::vector<int>::iterator it = str.begin() + 1;
+	std::cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << std::endl;
+	str.insert(it, 8, 421);
+	for (it = str.begin(); it != str.end(); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << std::endl;
+	std::vector<int>::iterator it1 = vtr.begin() + 1;
+	std::cout << "Size: " << vtr.size() << ", Capacity: " << vtr.capacity() << std::endl;
+	vtr.insert(it1, 8, 421);
+	for (it1 = vtr.begin(); it1 != vtr.end(); it1++)
+	{
+		std::cout << *it1 << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "Size: " << vtr.size() << ", Capacity: " << vtr.capacity() << std::endl;
 	return 0;
 }
