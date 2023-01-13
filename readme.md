@@ -55,3 +55,4 @@
 22. Created map.hpp.
 23. Finished implementation of insert function in vector.
 24. Completed swap function for vector.
+25. Working on pair.hpp to implement the std::pair for the map.
