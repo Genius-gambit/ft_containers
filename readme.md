@@ -28,7 +28,7 @@
 5. Implement vector container operator overloads.
 6. Implement lexicograhical comparisons of the vector.
 7. Implement structure for the map container.
-8. Understand the logic of the red black tree.
+
 
 `#LOG:`
 
@@ -58,4 +58,4 @@
 24. Completed swap function for vector.
 25. Working on pair.hpp to implement the std::pair for the map.
 26. Finished pair.hpp.
-27. Working on RNTree.hpp to implement the Red Black Tree for the map container.
+27. Working on the Linked list of the node for the implementation of std::map.
