@@ -7,28 +7,13 @@
 # include <string>
 # include <iomanip>
 # include <memory>
+#include "map.hpp"
 
 /*
 */
 
 int main(void)
 {
-	std::vector<int>	trial(6, 100);
-	std::vector<int>::iterator	it;
-
-	trial.insert(trial.begin() + 5, 5, 5);
-	for (std::vector<int>::iterator j = trial.begin(); j < trial.end(); j++)
-	{
-		std::cout << *j << " ";
-	}
-	std::cout << std::endl;
-	std::cout << trial.size() << std::endl;
-	trial.insert(trial.begin(), 5, 45);
-	std::cout << trial.size() << std::endl;
-	for (std::vector<int>::iterator j = trial.begin(); j < trial.end(); j++)
-	{
-		std::cout << *j << " ";
-	}
-	std::cout << std::endl;
+	ft::map<int, char, std::less<int>, ft::pair<int, char> >	trial;
 	return 0;
 }

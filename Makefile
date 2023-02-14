@@ -12,7 +12,7 @@
 
 NAME = ft_containers
 
-SRCS = main.cpp
+SRCS = vector.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
