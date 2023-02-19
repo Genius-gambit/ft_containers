@@ -28,6 +28,7 @@
 5. Implement vector container operator overloads.
 6. Implement lexicograhical comparisons of the vector.
 7. Implement structure for the map container.
+8. ~~Finished implementation of the map iterators.~~
 
 
 `#LOG:`
@@ -59,4 +60,5 @@
 25. Working on pair.hpp to implement the std::pair for the map.
 26. Finished pair.hpp.
 27. Working on the Linked list of the node for the implementation of std::map.
-28. Working on the Constant Map Iterator. To be continued.
+28. Working on the Constant Map Iterator
+29. Working on the Constant Reverse Map Iterator. To be continued.

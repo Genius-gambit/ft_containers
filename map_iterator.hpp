@@ -190,6 +190,110 @@ namespace ft
 			return (*tmp);
 		};
 	};
+	template<class K, class V>
+	class ReverseMapIterator
+	{
+		public:
+			typedef ft::pair<K, V>	value_type;
+			typedef ft::pair<K, V>	&reference;
+			typedef BNode<K, V>	*pointer;
+
+		protected:
+			pointer	_ptr;
+
+		private:
+			pointer	__successor(pointer ptr)
+			{
+				pointer	next;
+
+				if (!ptr->rightNode)
+				{
+					next = ptr;
+					while (next->parentNode && next == next->parentNode->rightNode)
+						next = next->parentNode;
+					next = next->parentNode;
+				}
+				else
+				{
+					next = ptr->rightNode;
+					while (next->leftNode)
+						next = next->leftNode;
+				}
+				return (next);
+			};
+			pointer	_predecessor(pointer ptr)
+			{
+				pointer	next;
+
+				if (!ptr->leftNode)
+				{
+					next = ptr;
+					while (next->parentNode && next == next->parentNode->leftNode)
+						next = next->parentNode;
+					next = next->parentNode;
+				}
+				else
+				{
+					next = ptr->leftNode;
+					while (next->rightNode)
+						next = next->rightNode;
+				}
+				return (next);
+			};
+		public:
+			ReverseMapIterator() : _ptr(0) {};
+			ReverseMapIterator(const pointer ptr) : _ptr(ptr) {};
+			ReverseMapIterator(const ReverseMapIterator &other)
+			{
+				*this = other;
+			};
+			ReverseMapIterator	&operator=(const ReverseMapIterator &other)
+			{
+				this->_ptr = other._ptr;
+				return (*this);
+			};
+			pointer	node() { return (_ptr); };
+			value_type	&operator*() { return (_ptr->pair); };
+			value_type	*operator->() { return (&_ptr->pair); };
+			bool	operator==(const ReverseMapIterator<K, V> &other) { return (_ptr == other._ptr); };
+			bool	operator!=(const ReverseMapIterator<K, V> &other) { return (!(_ptr == other._ptr)); };
+			bool	operator>(const ReverseMapIterator<K, V> &other) { return (_ptr > other._ptr); };
+			bool	operator>=(const ReverseMapIterator<K, V> &other) { return (_ptr >= other._ptr); };
+			bool	operator<(const ReverseMapIterator<K, V> &other) { return (_ptr < other._ptr); };
+			bool	operator<=(const ReverseMapIterator<K, V> &other) { return (_ptr <= other._ptr); };
+			ReverseMapIterator	&operator++()
+			{
+				_ptr = _predecessor(_ptr);
+				return (*this);
+			};
+			ReverseMapIterator	&operator--()
+			{
+				_ptr = __successor(_ptr);
+				return (*this);
+			};
+			ReverseMapIterator	&operator++(int)
+			{
+				ReverseMapIterator	tmp(*this);
+				this->operator++();
+				return (tmp);
+			};
+			ReverseMapIterator	&operator--(int)
+			{
+				ReverseMapIterator	tmp(*this);
+				this->operator--();
+				return (tmp);
+			};
+	};
+	template<class K, class V>
+	class ConstReverseMapIterator
+	{
+		public:
+				typedef ft::pair<K, V>	value_type;
+				typedef ft::pair<K, V>	&reference;
+				typedef BNode<K, V>	*pointer;
+		protected:
+				pointer	_ptr;
+	};
 }
 
 #endif
