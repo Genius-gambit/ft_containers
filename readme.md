@@ -61,4 +61,5 @@
 26. Finished pair.hpp.
 27. Working on the Linked list of the node for the implementation of std::map.
 28. Working on the Constant Map Iterator
-29. Working on the Constant Reverse Map Iterator. To be continued.
+29. Working on the Constant Reverse Map Iterator.
+30. Implemented Constructor and Destructor of the Constant Reverse Map Iterator.

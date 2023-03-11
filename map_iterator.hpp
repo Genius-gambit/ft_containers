@@ -293,6 +293,58 @@ namespace ft
 				typedef BNode<K, V>	*pointer;
 		protected:
 				pointer	_ptr;
+		private:
+			pointer	_successor(pointer ptr)
+			{
+				pointer	next;
+				if (!ptr->rightNode)
+				{
+					next = ptr;
+					while (next->parentNode && next == next->parentNode->rightNode)
+						next = next->parentNode;
+					next = next->parentNode;
+				}
+				else
+				{
+					next = ptr->rightNode;
+					while (next->leftNode)
+						next = next->leftNode;
+				}
+				return (next);
+			};
+			pointer	_predecessor(pointer ptr)
+			{
+				pointer	next;
+				if (!ptr->leftNode)
+				{
+					next = ptr;
+					while (next->parentNode && next == next->parentNode->leftNode)
+						next = next->parentNode;
+					next = next->parentNode;
+				}
+				else
+				{
+					next = ptr->leftNode;
+					while (next->rightNode)
+						next = next->parentNode;
+				}
+				return (next);
+			};
+			public:
+				ConstReverseMapIterator() : _ptr(0) {};
+				ConstReverseMapIterator(const pointer ptr) : _ptr(ptr) {};
+				Const ReverseMapIterator(const ConstReverseMapIterator &other) { *this = other; };
+				ConstReverseMapIterator	&operator=(const ConstReverseMapIterator &other)
+				{
+					this->_ptr = other._ptr;
+					return (*this);
+				};
+				pointer	Node(void) { return (_ptr); };
+				value_type	&operator*(void) { return (_ptr->pair); };
+				value_type	*operator->(void) { return (_&ptr->pair); };
+				bool	operator==(const ReverseMapIterator<K, V> &other) { return (_ptr == other._ptr); };
+				bool	operator!=(const ReverseMapIterator<K, V> &other) { return (_!(ptr == other._ptr)); };
+				
 	};
 }
 
