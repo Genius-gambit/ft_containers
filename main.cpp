@@ -1,4 +1,5 @@
 # include "vector.hpp"
+# include "map.hpp"
 #include "pair.hpp"
 // # include <vector>
 // # include <cstdio>
@@ -43,14 +44,16 @@
 
 int main(void)
 {
-	ft::pair<int, char> _pair1;
-	_pair1.first = 100;
-	_pair1.sec = 'c';
-	std::cout << "Key: " << _pair1.first << ", Value: " << _pair1.sec << std::endl;
-	ft::pair<int, char> _pair2(200, 'h');
-	std::cout << "Key: " << _pair2.first << ", Value: " << _pair2.sec << std::endl;
-	ft::pair<int, char> _pair3;
-	_pair3 = ft::make_pair(300, 'a');
-	std::cout << "Key: " << _pair3.first << ", Value: " << _pair3.sec << std::endl;
+	ft::map<int, std::string>	trial;
+
+	// ft::pair<int, char> _pair1;
+	// _pair1.first = 100;
+	// _pair1.sec = 'c';
+	// std::cout << "Key: " << _pair1.first << ", Value: " << _pair1.sec << std::endl;
+	// ft::pair<int, char> _pair2(200, 'h');
+	// std::cout << "Key: " << _pair2.first << ", Value: " << _pair2.sec << std::endl;
+	// ft::pair<int, char> _pair3;
+	// _pair3 = ft::make_pair(300, 'a');
+	// std::cout << "Key: " << _pair3.first << ", Value: " << _pair3.sec << std::endl;
 	return 0;
 }

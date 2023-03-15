@@ -5,6 +5,7 @@
 #include "equal.hpp"
 #include "pair.hpp"
 #include "utils.hpp"
+#include "map_iterator.hpp"
 #include <functional>
 
 namespace ft
