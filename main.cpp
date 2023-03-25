@@ -45,7 +45,6 @@
 int main(void)
 {
 	ft::map<int, std::string>	trial;
-
 	// ft::pair<int, char> _pair1;
 	// _pair1.first = 100;
 	// _pair1.sec = 'c';
