@@ -64,6 +64,23 @@ namespace ft
 					free_tree(n->leftNode);
 				delete n;
 			};
+			node	_find(node n, key_type key) const
+			{
+				node	tmp;
+				if (!n->end && n->pair.first == key && n->parentNode)
+					return (n);
+				if (n->rightNode)
+				{
+					if (tmp = _find(n->rightNode, key))
+						return (tmp);
+				}
+				if (n->leftNode)
+				{
+					if (tmp = _find(n->leftNode, key))
+						return (tmp);
+				}
+				return (0);
+			}
 			node insert_node(node n, key_type key, mapped_type value, bool end = false){
 
 			};
@@ -92,6 +109,7 @@ namespace ft
 			{
 				free_tree(this->_root);
 			};
+			// [ ITERATORS ]
 			iterator	begin(void)
 			{
 				node	n = _root;
@@ -101,8 +119,126 @@ namespace ft
 					n = n->rightNode;
 				while (n->leftNode)
 					n = n->leftNode;
+				return (iterator(n));
+			};
+			const_iterator	begin(void) const
+			{
+				node	n = _root;
+				if (!n->leftNode && !n->rightNode)
+					return (end());
+				if (!n->leftNode && n->rightNode)
+					n = n->rightNode;
+				while (n->leftNode)
+					n = n->leftNode;
 				return (const_iterator(n));
-			}
+			};
+			iterator	end(void) { return (iterator(_end())); };
+			const_iterator	end(void) const { return (const_iterator(_end())); };
+			reverse_iterator	rbegin(void)
+			{
+				iterator	i = end();
+				i--;
+				return (reverse_iterator(i.node()));
+			};
+			const_reverse_iterator	rbegin(void) const
+			{
+				iterator	i = end();
+				i--;
+				return (const_reverse_iterator(i.node()));
+			};
+			reverse_iterator	rend(void)
+			{
+				return (reverse_iterator(_root));
+			};
+			const_reverse_iterator	rend(void) const
+			{
+				return (const_reverse_iterator(_root));
+			};
+			// [ CAPACITY ]
+			bool	empty(void) const { return (_length == 0); };
+			size_type size() const { return (_length); };
+			size_type max_size() const { return (std::numeric_limits<size_type>::max() / sizeof(ft::BNode<key_type, mapped_type>)) };
+
+			// [ OBSERVERS ]
+			key_compare key_comp() const { return (_comp); };
+			value_compare value_comp() const { return (this->value_comp); };
+			
+			// [ OPERATIONS ]
+			iterator find (const key_type& k)
+			{
+				if (empty())
+					return (end());
+				node	tmp = _find(_root, k);
+				if (tmp)
+					return (iterator(tmp));
+				return (end());
+			};
+			const_iterator find (const key_type& k) const
+			{
+				if (empty())
+					return (end());
+				node	tmp = _find(_root, k);
+				if (tmp)
+					return (const_iterator(tmp));
+				return (end());
+			};
+			size_type count (const key_type& k) const
+			{
+				size_t	c = 0;
+				const_iterator	it = begin();
+
+				while (it != end())
+				{
+					if (it->first == k)
+						++c;
+					++it;
+				}
+				return (c);
+			};
+			iterator lower_bound (const key_type& k)
+			{
+				iterator	it = begin();
+				while (it != end())
+				{
+					if (this->_comp(it->first, k) <= 0)
+						return (it);
+					++it;
+				}
+				return (end());
+			};
+			const_iterator lower_bound (const key_type& k) const
+			{
+				const_iterator	it = begin();
+				while (it != end())
+				{
+					if (this->_comp(it->first, k) <= 0)
+						return (it);
+					++it;
+				}
+				return (end());
+			};
+			iterator upper_bound (const key_type& k)
+			{
+				iterator	it = begin();
+				while (it != end())
+				{
+					if (it->first != k && this->_comp(it->first, k) <= 0)
+						return (it);
+					++it;
+				}
+				return (end());
+			};
+			const_iterator upper_bound (const key_type& k) const
+			{
+				const_iterator	it = begin();
+				while (it != end())
+				{
+					if (it->first != k && this->_comp(it->first, k) <= 0)
+						return (it);
+					++it;
+				}
+				return (end());
+			};
 			void	erase(iterator first, iterator last)
 			{
 

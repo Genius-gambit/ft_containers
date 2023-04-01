@@ -64,3 +64,4 @@
 29. Working on the Constant Reverse Map Iterator.
 30. Implemented Constructor and Destructor of the Constant Reverse Map Iterator.
 31. Working on the member functions of the Map Container.
+32. Implemented some Obeservers functions in map.hpp
