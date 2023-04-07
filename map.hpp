@@ -5,6 +5,7 @@
 #include "utils.hpp"
 #include "map_iterator.hpp"
 #include <functional>
+#include <limits>
 
 namespace ft
 {
@@ -50,6 +51,38 @@ namespace ft
 				elem->end = end;
 				return (elem);
 			};
+			node	insert_node(node n, key_type key, mapped_type value, bool end = false)
+			{
+				if (n->end)
+				{
+					if (!n->leftNode)
+					{
+						n->leftNode = new_node(key, value, n, end);
+						return (n->leftNode);
+					}
+					return (insert_node(n->leftNode, key, value));
+				}
+				if (key < n->pair.first && !end)
+				{
+					if (!n->leftNode)
+					{
+						n->leftNode = new_node(key, value, n, end);
+						return(n->leftNode);
+					}
+					else
+						return (insert_node(n->leftNode, key, value));
+				}
+				else
+				{
+					if (!n->rightNode)
+					{
+						n->rightNode = new_node(key, value, n, end);
+						return (n->rightNode);
+					}
+					else
+						return (insert_node(n->rightNode, key, value));
+				}
+			};
 			void init_tree()
 			{
 				_root = new_node(key_type(), mapped_type(), 0);
@@ -80,10 +113,8 @@ namespace ft
 						return (tmp);
 				}
 				return (0);
-			}
-			node insert_node(node n, key_type key, mapped_type value, bool end = false){
-
 			};
+			node	_end(void) const { return (_root->rightNode); };
 
 		public:
 			explicit map(const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _alloc(alloc), _comp(comp)
@@ -105,6 +136,24 @@ namespace ft
 					++first;
 				}
 			};
+			std::pair<iterator, bool> insert(const value_type &value)
+			{
+				iterator	tmp;
+
+				if ((tmp = find(value.first)) != end())
+					return (ft::make_pair(tmp, false));
+				++_length;
+				return (ft::make_pair(iterator(insert_node(_root, value.first, value.sec)), true));
+			}
+			iterator	insert(iterator position, const value_type &value)
+			{
+				iterator	tmp;
+
+				if (tmp = find(value.first) != end())
+					return (tmp);
+				++_length;
+				return (iterator(insert_node(position.node(), value.first, value.sec)));
+			}
 			~map()
 			{
 				free_tree(this->_root);
@@ -157,7 +206,7 @@ namespace ft
 			// [ CAPACITY ]
 			bool	empty(void) const { return (_length == 0); };
 			size_type size() const { return (_length); };
-			size_type max_size() const { return (std::numeric_limits<size_type>::max() / sizeof(ft::BNode<key_type, mapped_type>)) };
+			size_type max_size() const { return (std::numeric_limits<size_type>::max() / sizeof(ft::BNode<key_type, mapped_type>)); };
 
 			// [ OBSERVERS ]
 			key_compare key_comp() const { return (_comp); };
@@ -239,6 +288,10 @@ namespace ft
 				}
 				return (end());
 			};
+			// void	erase(iterator position)
+			// {
+			// 	delete
+			// }
 			void	erase(iterator first, iterator last)
 			{
 
