@@ -66,3 +66,11 @@
 31. Working on the member functions of the Map Container.
 32. Implemented some Obeservers functions in map.hpp
 33. Implemented insert function with overloads.
+
+## Red Black Tree Notes:
+1. If tree is empty, create new node as root node with black color.
+2. If tree is not empty, create new node as leaf node with red color.
+3. If parent of new node is black then exit.
+4. If parent of new node is red, then check the color of parent's sibling of new node.
+5. If color is black or null then do suitable rotation and recolor.
+6. If color is red then recolor & also check if parent's parent of new node is not root node then recolor it and recheck
