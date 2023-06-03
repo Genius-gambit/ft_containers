@@ -14,22 +14,22 @@ namespace ft
 		typedef T2 sec_type;
 
 		first_type first;
-		sec_type sec;
+		sec_type second;
 
 		/*********************************************************Constuctors**************************************************************************/
-		pair() : first(), sec(){};
+		pair() : first(), second(){};
 		template <typename U, typename V>
-		pair(const pair<U, V> &p) : first(p.first), sec(p.sec){};
-		pair(const first_type &a, const sec_type &b) : first(a), sec(b){};
+		pair(const pair<U, V> &p) : first(p.first), second(p.second){};
+		pair(const first_type &a, const sec_type &b) : first(a), second(b){};
 		pair &operator=(const pair &p)
 		{
 			this->first = p.first;
-			this->sec = p.sec;
+			this->second = p.second;
 			return (*this);
 		}
 		~pair(){};
 
-		/********************************************************* Non Member Functions **************************************************************************/
+		/****************************************************Non Member Functions********************************************************************/
 		void getFirst() { std::cout << this->first; };
 		void getSec() { std::cout << this->sec; };
 	};

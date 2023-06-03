@@ -74,3 +74,8 @@
 4. If parent of new node is red, then check the color of parent's sibling of new node.
 5. If color is black or null then do suitable rotation and recolor.
 6. If color is red then recolor & also check if parent's parent of new node is not root node then recolor it and recheck
+## Objectives
+1. - [ ] Implementation of the std::pair.
+2. - [ ] Create the foundation structure of the map.
+3. - [ ] Create the Constructor of the Map.
+4. - [ ] Create a Binary Tree.

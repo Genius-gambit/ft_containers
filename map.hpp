@@ -104,12 +104,14 @@ namespace ft
 					return (n);
 				if (n->rightNode)
 				{
-					if (tmp = _find(n->rightNode, key))
+					tmp = _find(n->rightNode, key) 
+					if (tmp)
 						return (tmp);
 				}
 				if (n->leftNode)
 				{
-					if (tmp = _find(n->leftNode, key))
+					tmp = _find(n->leftNode, key)
+					if (tmp)
 						return (tmp);
 				}
 				return (0);

@@ -20,6 +20,8 @@ namespace ft
 		BNode* rightNode;
 		BNode* parentNode;
 		bool	end;
+		bool	_root;
+		bool	_red;
 	};
 };
 

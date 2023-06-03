@@ -42,9 +42,14 @@
 // 	std::cout << std::endl;
 // }
 
+#include <map>
 int main(void)
 {
-	ft::map<int, char>	trial(0, 25);
+	ft::map<int, char>	trial;
+	std::map<int, char>	file;
+	ft::map<int, char>::iterator	it = trial.end();
+	// ft::pair<int, char>	_pair(0, 'a');
+	// trial.insert(_pair);
 	// ft::pair<int, char> _pair1;
 	// _pair1.first = 100;
 	// _pair1.sec = 'c';
